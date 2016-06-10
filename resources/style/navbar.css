@@ -1,0 +1,39 @@
+body > nav.container-fluid {
+	background-color: #EDEEE9;
+	color: #B0B0B0;
+	text-align: center;
+}
+body nav.container-fluid > div > div:not(:last-child) {
+	border-right-style: solid;
+	border-color: #F5F5F5;
+}
+nav .nav-calendar {
+	color: #777777;
+}
+nav .nav-current-day {
+    font-weight: 900;
+    font-size: 1.5em;
+}
+nav .nav-current-day:hover, nav .nav-current-day.active {
+    color: #E8AD47;
+}
+.selected-date {
+	color: #337ab7;
+	font-size: 1.2em;
+	font-weight: 900;
+}
+nav .nav-done:hover, nav .nav-done.active {
+	color: #52AF54;
+}
+nav .nav-in-progress:hover, nav .nav-in-progress.active {
+	color: #3695E6;
+}
+nav .nav-to-do:hover, nav .nav-to-do.active {
+	color: #E8AD47;
+}
+nav .nav-about:hover, nav .nav-about.active {
+	color: #777777;
+}
+nav .nav-all:hover, nav .nav-about.active {
+	color: #777777;
+}

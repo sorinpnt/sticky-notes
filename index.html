@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+	
+	<head>
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<title>Sticky Notes</title>
+		<meta charset="utf-8">
+		<meta name="description" content="Sticky Notes">
+		<meta name="author" content="Pintea Sorin">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+		<link rel="stylesheet" href="resources/style/custom-distances.css">
+		<link rel="stylesheet" href="resources/style/navbar.css">
+		<link rel="stylesheet" href="resources/style/general.css">
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js"></script>
+		<script src="js/app.js"></script>
+
+	</head>
+	
+	<body ng-controller="appCtrl as appCtrl">
+		
+		<nav class="container-fluid text-center">
+		  <div class="row">
+		  	<div class="col-xs-3 pad-top-md pad-bottom-md">
+		  		<div class="col-xs-12 nav-current-day">
+		  			<span>Today</span>
+	  			</div>
+	  		</div>
+	  		<div class="col-xs-3 pad-top-md pad-bottom-md">
+	  			<div class="col-xs-4 nav-calendar">
+	  				<i class="fa fa-2x fa-calendar" aria-hidden="true"></i>
+	  			</div>
+	  			<div class="col-xs-8 selected-date">
+	  				17/08/2016
+	  			</div>
+	  		</div>
+	  		<div class="col-xs-5 pad-top-md pad-bottom-md">
+				<div class="col-xs-3 nav-done">
+					<i class="fa fa-2x fa-check" aria-hidden="true"></i>
+				</div>
+				<div class="col-xs-3 nav-in-progress">
+					<i class="fa fa-2x fa-clock-o" aria-hidden="true"></i>
+				</div>
+				<div class="col-xs-3 nav-to-do">
+					<i class="fa fa-2x fa-play" aria-hidden="true"></i>
+				</div>
+				<div class="col-xs-3 nav-all">
+					<i class="fa fa-2x fa-files-o" aria-hidden="true"></i>
+				</div>
+	  		</div>
+	  		<div class="col-xs-1 pad-top-md pad-bottom-md">
+				<div class="col-xs-12 nav-about">
+  					<i class="fa fa-2x fa-question-circle-o" aria-hidden="true"></i>
+	  			</div>
+	  		</div>
+
+		  </div>
+		</nav>
+		
+		<div class="container main-body">
+		</div>
+	
+	</body>
+
+</html>
+
+<!-- http://grow.kissmetrics.com/careers/software-developer -->
+<!-- http://grow.kissmetrics.com/web-front-end-developer -->
+<!-- http://www.workingnomads.co/jobs -->
+<!-- https://fintechdev.bamboohr.com/jobs/view.php?id=9 -->
