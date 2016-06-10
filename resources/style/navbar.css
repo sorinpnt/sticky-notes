@@ -7,8 +7,11 @@ body nav.container-fluid > div > div:not(:last-child) {
 	border-right-style: solid;
 	border-color: #F5F5F5;
 }
-nav .nav-calendar {
-	color: #777777;
+body nav.container-fluid > div i, body nav.container-fluid > div span{
+	cursor: pointer;
+}
+nav .nav-calendar:hover {
+	color: #337ab7;
 }
 nav .nav-current-day {
     font-weight: 900;
