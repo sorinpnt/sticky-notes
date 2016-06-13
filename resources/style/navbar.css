@@ -10,7 +10,7 @@ body nav.container-fluid > div > div:not(:last-child) {
 body nav.container-fluid > div i, body nav.container-fluid > div span{
 	cursor: pointer;
 }
-nav .nav-calendar:hover {
+nav .nav-calendar:hover, nav .nav-add-note:hover {
 	color: #337ab7;
 }
 nav .nav-current-day {
@@ -37,6 +37,6 @@ nav .nav-to-do:hover, nav .nav-to-do.active {
 nav .nav-about:hover, nav .nav-about.active {
 	color: #777777;
 }
-nav .nav-all:hover, nav .nav-about.active {
-	color: #777777;
+nav .nav-add-note, nav .nav-add-note.active {
+	color: #FF0000;
 }
