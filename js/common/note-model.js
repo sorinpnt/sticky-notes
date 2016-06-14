@@ -15,9 +15,9 @@ var noteModel = function(localStorageService) {
 		}
 	}
 
-	var addNote = function(noteTitle, noteBody) {
+	var addNote = function(noteDetails) {
 		var noteId = moment().toDate().getTime();
-		localStorageService.set(noteId, JSON.stringify({ title: noteTitle, text: noteBody }));
+		localStorageService.set(noteId, JSON.stringify(noteDetails));
 		return noteId;
 	}
 
@@ -33,16 +33,22 @@ var noteModel = function(localStorageService) {
 
 	var removeNote = function(noteId) { return localStorageService.remove(noteId); }
 
-	var getAllNotes = function() {
+	var filterAllNotes = function( statusFilter ) {
 		var allNotesResult = [];
 		var allNotesId = localStorageService.keys();
+
 		angular.forEach(allNotesId, function(noteId) {
 			var noteDetails = JSON.parse(localStorageService.get(noteId));
-			allNotesResult.push({
-				id: noteId,
-				title: noteDetails.title,
-				body: noteDetails.text
-			});
+			if ( noteDetails.statusId === statusFilter.id ) {
+				allNotesResult.push({
+					id: noteId,
+					priorityId: noteDetails.priorityId,
+					statusId: noteDetails.statusId,
+					creationDate: noteId,
+					title: noteDetails.title,
+					text: noteDetails.text
+				});
+			}
 		});
 		return allNotesResult;
 	}
@@ -56,7 +62,7 @@ var noteModel = function(localStorageService) {
 		add: addNote,
 		save: saveNote,
 		remove: removeNote,
-		getAll: getAllNotes,
+		filter: filterAllNotes,
 		removeAll: removeAllNotes,
 		canSave: canSaveNotes
 	};

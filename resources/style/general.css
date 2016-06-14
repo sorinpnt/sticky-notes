@@ -22,6 +22,18 @@ body {
 .priority-low-color {
 	color: #00FF00;
 }
+.section-done-color {
+	border-bottom-color: #52AF54;
+}
+.section-in-progress-color {
+	border-bottom-color: #3695E6;
+}
+.section-pending-color {
+	border-bottom-color: #E8AD47;
+}
 .add-edit-modal-controls > button {
 	margin-top: 25px;
+}
+.bottom-bordered {
+	border-bottom-style: solid;
 }

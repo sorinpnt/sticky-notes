@@ -1,4 +1,4 @@
-var addNote = function( $scope, $uibModal, NOTE_PRIORITY, NOTE_STATUS ) {
+var addNote = function( $scope, $uibModalInstance, NOTE_PRIORITY, NOTE_STATUS ) {
 	this.selected = { value: ''};
 	
 	this.modalTitle = 'Add Note';
@@ -6,11 +6,18 @@ var addNote = function( $scope, $uibModal, NOTE_PRIORITY, NOTE_STATUS ) {
 	this.status = NOTE_STATUS;
 	this.note = {
 		title: '',
-		body: '',
+		text: '',
 		priorityId: this.priorities[0].id,
 		statusId: this.status[0].id
 	};
 
+	this.ok = function(){
+		$uibModalInstance.close(this.note);
+	}
+
+	this.cancel = function () {
+    	$uibModalInstance.dismiss();
+  	}
 };
 
-addNote.$inject = ['$scope', '$uibModal', 'NOTE_PRIORITY', 'NOTE_STATUS'];
+addNote.$inject = ['$scope', '$uibModalInstance', 'NOTE_PRIORITY', 'NOTE_STATUS'];

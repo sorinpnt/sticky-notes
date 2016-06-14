@@ -1,0 +1,34 @@
+.main-body .panel {
+	box-shadow: 5px 5px 10px #d3d3d3;
+}
+.main-body .panel.panel-done {
+	border-color: #52AF54;
+}
+.main-body .panel.panel-done > .panel-heading {
+	background-color: #52AF54;
+}
+.main-body .panel.panel-in-progress {
+	border-color: #3695E6;
+}
+.main-body .panel.panel-in-progress > .panel-heading {
+	background-color: #3695E6;
+}
+.main-body .panel.panel-pending {
+	border-color: #E8AD47;
+}
+.main-body .panel.panel-pending > .panel-heading  {
+	background-color: #E8AD47;
+}
+.status-done-color {
+	color: #52AF54;
+}
+.status-in-progress-color {
+	color: #3695E6;
+}
+.status-pending-color {
+	color: #E8AD47;
+}
+.task-creation-time {
+	font-style: italic;
+	color: #b0b0b0;
+}

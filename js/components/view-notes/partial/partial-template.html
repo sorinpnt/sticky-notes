@@ -1,0 +1,54 @@
+<div 
+	class="row margin-bottom-lg bottom-bordered"
+	ng-init="statusClass = partialController.statusFilter.text.toLowerCase().replace(' ', '-')"
+	ng-class="' section-' +  statusClass + '-color '">
+		<div class="col-xs-12">
+			<h4 ng-class="' status-' +  statusClass + '-color '"> 
+				<i class="fa" ng-class="partialController.statusFilter.icon"></i>
+				<i class="margin-left-md"> {{ partialController.statusFilter.text }} </i>
+			</h4>
+		</div>
+</div>
+<div class="row">
+	<div class="col-xs-6 col-md-3 col-lg-2" ng-repeat="note in partialController.notes">
+		<div class="panel" ng-class="'panel-' + statusClass">
+		  
+		  <div class="panel-heading">
+		  	<div class="row">
+		  		<div class="col-sm-2 col-sm-offset-7">
+			  		<i class="fa fa-pencil-square-o"></i>
+		  		</div>
+		  		<div class="col-sm-2">
+			  		<i class="fa fa-trash-o"></i>
+		  		</div>
+		  	</div>
+		  </div>
+
+		  <div class="panel-body">
+		  	<div class="row margin-left-md">
+				<h5> <em> <strong> <u> {{note.title}} </u> </strong> </em> </h5>
+		  	</div>
+
+		  	<div class="row margin-left-sm">
+		    	{{note.text}}
+		  	</div>
+		  	<div class="row">
+		  		<div class="col-xs-12 text-right">
+		  			<small class="task-creation-time">2d 3h 48m ago</small>
+		  		</div>
+		  	</div>
+		  </div>
+
+		  <div class="panel-footer"
+		  	ng-init="priorityDetails = (note | getPriorityDetails:partialController.notePriorities)"
+		  	ng-class="'priority-' + priorityDetails.text.toLowerCase() + '-color'">
+		  	<div class="row">
+		  		<div class="col-xs-12 text-center">
+		  			<i class="fa pad-left-sm" ng-class="priorityDetails.icon"></i>
+	  				{{ priorityDetails.text }} Priority
+		  		</div>
+		  	</div>
+		  </div>	
+		</div>	
+	</div>
+</div>

@@ -30,6 +30,9 @@ var notesPossibleStatus = [{
 	icon: 'fa-check'
 }];
 
-appConfig.constant('NOTE_PRIORITY', notesPossiblePriority );
-appConfig.constant('NOTE_STATUS', notesPossibleStatus );
-
+appConfig
+	.constant('NOTE_PRIORITY', notesPossiblePriority )
+	.constant('NOTE_STATUS', notesPossibleStatus )
+	.config( function ($stateProvider, $urlRouterProvider){
+		$urlRouterProvider.otherwise("/home");
+	});

@@ -35,12 +35,12 @@
                         name="noteBody"
                         placeholder="Type text"
                         rows="5"
-                        ng-maxlength="250"
-                        ng-model="modalCtrl.note.body"
+                        ng-maxlength="100"
+                        ng-model="modalCtrl.note.text"
                         ng-required="true"></textarea>
                         <div class="row text-right pad-right-lg">
                             <p class="small text-info" ng-if="!addEditNoteForm.noteBody.$error.maxlength">
-                                {{ modalCtrl.note.body.length || 0 }} / 250
+                                {{ modalCtrl.note.text.length || 0 }} / 100
                             </p>
                             <p class="small text-danger" ng-if="addEditNoteForm.noteBody.$error.maxlength">
                                 Too many characters
@@ -103,9 +103,11 @@
                     <button
                         class="btn btn-primary"
                         type="button"
-                        ng-click="ok()"
-                        ng-disabled="addEditNoteForm.$invalid">Save</button>
-                    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                        ng-click="modalCtrl.ok()"
+                        ng-disabled="addEditNoteForm.$invalid"> Save </button>
+                    <button class="btn btn-warning"
+                            type="button"
+                            ng-click="modalCtrl.cancel()"> Cancel </button>
                 </div>
             </div>
 

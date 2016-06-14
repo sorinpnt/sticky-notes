@@ -10,21 +10,6 @@ body nav.container-fluid > div > div:not(:last-child) {
 body nav.container-fluid > div i, body nav.container-fluid > div span {
 	cursor: pointer;
 }
-nav .nav-calendar:hover, nav .nav-add-note:hover {
-	color: #337ab7;
-}
-nav .nav-current-day {
-    font-weight: 900;
-    font-size: 1.5em;
-}
-nav .nav-current-day:hover, nav .nav-current-day.active {
-    color: #E8AD47;
-}
-.selected-date {
-	color: #337ab7;
-	font-size: 1.2em;
-	font-weight: 900;
-}
 nav .nav-done:hover, nav .nav-done.active {
 	color: #52AF54;
 }

@@ -15,6 +15,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.17.1/select.min.css">
 		<link rel="stylesheet" href="resources/style/custom-distances.css">
 		<link rel="stylesheet" href="resources/style/navbar.css">
+		<link rel="stylesheet" href="resources/style/notes-panel.css">
 		<link rel="stylesheet" href="resources/style/general.css">
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
@@ -25,6 +26,8 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.17.1/select.min.js"></script>
 		<script src="js/app-config.js"></script>
 		<script src="js/components/add-note/add-note-ctrl.js"></script>
+		<script src="js/components/view-notes/partial/partial-ctrl.js"></script>
+		<script src="js/components/view-notes/view-notes-module.js"></script>
 		<script src="js/common/note-model.js"></script>
 		<script src="js/app.js"></script>
 
@@ -34,31 +37,24 @@
 		
 		<nav class="container-fluid text-center">
 		  <div class="row">
-		  	<div class="col-xs-3 pad-top-md pad-bottom-md">
-		  		<div class="col-xs-12 nav-current-day">
-		  			<span>Today</span>
-	  			</div>
-	  		</div>
-	  		<div class="col-xs-3 pad-top-md pad-bottom-md">
-	  			<div class="col-xs-4 nav-calendar">
-	  				<i class="fa fa-2x fa-calendar" aria-hidden="true"></i>
-	  			</div>
-	  			<div class="col-xs-8 selected-date">
-	  				17/08/2016
-	  			</div>
-	  		</div>
-	  		<div class="col-xs-4 pad-top-md pad-bottom-md">
-				<div class="col-xs-4 nav-done">
-					<i class="fa fa-2x fa-check" aria-hidden="true"></i>
+	  		<div class="col-xs-4 col-xs-offset-4 pad-top-md pad-bottom-md">
+				<div  class="col-xs-4 nav-done"
+					  ng-class="{true: 'active', false: ''}[showDoneSection]"
+					  ng-init="showDoneSection=true">
+				    <i class="fa fa-2x fa-check" ng-click="showDoneSection=!showDoneSection"></i>
 				</div>
-				<div class="col-xs-4 nav-in-progress">
-					<i class="fa fa-2x fa-clock-o" aria-hidden="true"></i>
+				<div  class="col-xs-4 nav-in-progress"
+					  ng-class="{true: 'active', false: ''}[showInProgressSection]"
+					  ng-init="showInProgressSection=true">
+					<i class="fa fa-2x fa-clock-o" ng-click="showInProgressSection=!showInProgressSection"></i>
 				</div>
-				<div class="col-xs-4 nav-pending">
-					<i class="fa fa-2x fa-play" aria-hidden="true"></i>
+				<div class="col-xs-4 nav-pending"
+					  ng-class="{true: 'active', false: ''}[showPendingSection]"
+					  ng-init="showPendingSection=true">
+					<i class="fa fa-2x fa-play" ng-click="showPendingSection=!showPendingSection"></i>
 				</div>
 	  		</div>
-	  		<div class="col-xs-1 pad-top-md pad-bottom-md">
+	  		<div class="col-xs-2 pad-top-md pad-bottom-md">
 				<div class="col-xs-12 nav-add-note">
 					<i 
 					class="fa fa-2x fa-plus"
@@ -66,7 +62,7 @@
   					ng-click="appCtrl.openAddNote()"></i>
 				</div>
 	  		</div>
-	  		<div class="col-xs-1 pad-top-md pad-bottom-md">
+	  		<div class="col-xs-2 pad-top-md pad-bottom-md">
 				<div class="col-xs-12 nav-about">
   					<i class="fa fa-2x fa-question-circle-o" aria-hidden="true"></i>
 	  			</div>
@@ -76,7 +72,15 @@
 		</nav>
 		
 		<div class="container main-body">
-			<div ui-view></div>
+			<div class="row" ng-show="showInProgressSection">
+		    	<div ui-view="statusInProgress@home"></div>
+			</div>
+			<div class="row" ng-show="showPendingSection">
+			    <div ui-view="statusPending@home"></div>
+			</div>
+			<div class="row" ng-show="showDoneSection">
+			    <div ui-view="statusDone@home"></div>
+			</div>
 		</div>
 	
 	</body>
