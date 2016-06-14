@@ -1,4 +1,3 @@
-
 <form name="addEditNoteForm">
     <div class="modal-header">
         <h3 class="modal-title">{{ modalCtrl.modalTitle }}</h3>
@@ -48,7 +47,14 @@
                             </p>
                         </div>
                 </div>
-               
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-1 text-center">
+                        <p class="small text-danger"
+                           ng-if="(addEditNoteForm.noteBody.$error.required || addEditNoteForm.noteTitle.$error.required ) && (addEditNoteForm.noteBody.$dirty && addEditNoteForm.noteTitle.$dirty )">
+                            All fields are required
+                        </p>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -57,46 +63,53 @@
     <div class="modal-footer">
         <div class="row">
 
-            <div class="col-xs-10 col-xs-offset-1">
+            <div class="col-xs-12">
                 
-                <div class="col-xs-6">
+                <div class="col-xs-3">
                     <div class="form-group">
                         <label class="pull-left">Priority</label>
-                        <ui-select ng-model="modalCtrl.selected.value">
+                        <ui-select ng-model="modalCtrl.note.priorityId" search-enabled="false">
                             <ui-select-match>
                                 <span ng-bind="$select.selected.text"></span>
                             </ui-select-match>
-                            <ui-select-choices repeat="item in modalCtrl.priorities">
+                            <ui-select-choices repeat="priority.id as priority in modalCtrl.priorities">
                                 <i class="fa margin-right-md"
-                                   ng-init="priorityClass = item.text.toLowerCase()"
-                                   ng-class="item.icon + ' priority-' +  priorityClass + '-color'"></i>
-                                <span ng-bind="item.text"></span>
+                                   ng-init="priorityClass = priority.text.toLowerCase()"
+                                   ng-class="priority.icon + ' priority-' +  priorityClass + '-color'"></i>
+                                <span ng-bind="priority.text"></span>
                             </ui-select-choices>
                         </ui-select>
                     </div>
                 </div>
                 
-                <div class="col-xs-6">
+                <div class="col-xs-3">
                     <div class="form-group">
                         <label class="pull-left">Status</label>
-                        <ui-select ng-model="modalCtrl.selected.value">
+                        <ui-select ng-model="modalCtrl.note.statusId" search-enabled="false">
                             <ui-select-match>
                                 <span ng-bind="$select.selected.text"></span>
                             </ui-select-match>
-                            <ui-select-choices repeat="item in modalCtrl.status">
+                            <ui-select-choices repeat="status.id as status in modalCtrl.status">
                                 <i class="fa margin-right-md"
-                                   ng-init="statusClass = item.text.toLowerCase().replace(' ', '-')"
-                                   ng-class="item.icon + ' status-' +  statusClass + '-color'"></i>
-                                <span ng-bind="item.text"></span>
+                                   ng-init="statusClass = status.text.toLowerCase().replace(' ', '-')"
+                                   ng-class="status.icon + ' status-' +  statusClass + '-color'"></i>
+                                <span ng-bind="status.text"></span>
                             </ui-select-choices>
                         </ui-select>
                     </div>
+                </div>
+
+                <div class="col-xs-6 add-edit-modal-controls">
+                    <button
+                        class="btn btn-primary"
+                        type="button"
+                        ng-click="ok()"
+                        ng-disabled="addEditNoteForm.$invalid">Save</button>
+                    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
                 </div>
             </div>
 
         </div>
-        <!-- <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button> -->
     </div>
 </form>
 

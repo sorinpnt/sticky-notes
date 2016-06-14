@@ -22,3 +22,6 @@ body {
 .priority-low-color {
 	color: #00FF00;
 }
+.add-edit-modal-controls > button {
+	margin-top: 25px;
+}
