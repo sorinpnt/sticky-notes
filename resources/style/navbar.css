@@ -7,7 +7,7 @@ body nav.container-fluid > div > div:not(:last-child) {
 	border-right-style: solid;
 	border-color: #F5F5F5;
 }
-body nav.container-fluid > div i, body nav.container-fluid > div span{
+body nav.container-fluid > div i, body nav.container-fluid > div span {
 	cursor: pointer;
 }
 nav .nav-calendar:hover, nav .nav-add-note:hover {
@@ -31,7 +31,7 @@ nav .nav-done:hover, nav .nav-done.active {
 nav .nav-in-progress:hover, nav .nav-in-progress.active {
 	color: #3695E6;
 }
-nav .nav-to-do:hover, nav .nav-to-do.active {
+nav .nav-pending:hover, nav .nav-pending.active {
 	color: #E8AD47;
 }
 nav .nav-about:hover, nav .nav-about.active {

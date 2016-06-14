@@ -4,3 +4,21 @@ body {
 .main-body {
 	padding-top: 70px;
 }
+.status-done-color {
+	color: #52AF54;
+}
+.status-in-progress-color {
+	color: #3695E6;
+}
+.status-pending-color {
+	color: #E8AD47;
+}
+.priority-high-color {
+	color: #FF0000;
+}
+.priority-medium-color {
+	color: #0000FF;
+}
+.priority-low-color {
+	color: #00FF00;
+}

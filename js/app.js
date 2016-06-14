@@ -1,12 +1,13 @@
 var app = angular.module('app', [ 
 	'ui.router',
+	'ui.select',
+	'ui.bootstrap',
 	'note.model',
-	'app.config',
-	'ui.bootstrap'
+	'app.config'
 ]);
 
 var appCtrl = function( $scope, $uibModal, noteModel ) {
-
+	
 	this.openAddNote = function() {
 
 		var modalSettings = {

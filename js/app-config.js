@@ -1,30 +1,31 @@
 var appConfig = angular.module('app.config', []);
 
 var notesPossiblePriority = [{
-	value: 3,
-	text: 'Low'
-},
-{	
-	value: 2,
-	text: 'Medium'
-},
-{
-	value: 1,
-	text: 'High'
+	id: 1,
+	text: 'High',
+	icon: 'fa-arrow-up'
+},{	
+	id: 2,
+	text: 'Medium',
+	icon: 'fa-arrows-h'
+},{
+	id: 3,
+	text: 'Low',
+	icon: 'fa-arrow-down'
 }];
 
 var notesPossibleStatus = [{
-	value: 1,
+	id: 1,
 	text: 'Pending',
 	icon: 'fa-play'
 },
 {	
-	value: 2,
+	id: 2,
 	text: 'In Progress',
 	icon: 'fa-clock-o'
 },
 {
-	value: 3,
+	id: 3,
 	text: 'Done',
 	icon: 'fa-check'
 }];
