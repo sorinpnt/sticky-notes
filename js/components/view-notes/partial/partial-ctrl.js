@@ -1,13 +1,18 @@
-var partialCtrl = function( $rootScope, $scope, $stateParams, $uibModal, noteModel, NOTE_PRIORITY, statusFilter ) {
+var partialCtrl = function( $rootScope, $scope, $stateParams, $uibModal, noteModel, NOTE_PRIORITY, filterStatus ) {
 	var ctrl = this;
-	var refreshNotes = function() {
-		ctrl.notes = noteModel.filter(statusFilter);
-	};
 	ctrl.notePriorities = NOTE_PRIORITY;
-
-	$rootScope.$on('refreshNotes', refreshNotes );
+	ctrl.filterStatus = filterStatus;
 	
-	ctrl.statusFilter = statusFilter;
+	var refreshCurrentNotes = function() {
+		ctrl.notes = noteModel.filter(ctrl.filterStatus);
+	};
+
+	var refreshAllNotes = function() {
+		$rootScope.$broadcast('refreshNotes');
+	};
+
+	$rootScope.$on('refreshNotes', refreshCurrentNotes );
+	
 	ctrl.deleteNote = function(noteId) {
 
 		var modalSettings = {
@@ -17,7 +22,7 @@ var partialCtrl = function( $rootScope, $scope, $stateParams, $uibModal, noteMod
 
 	    var deleteWasConfirmed = function( newNote ) {
 			noteModel.remove(noteId);
-			refreshNotes();
+			refreshCurrentNotes();
 	    };
 
 	    $uibModal
@@ -26,7 +31,27 @@ var partialCtrl = function( $rootScope, $scope, $stateParams, $uibModal, noteMod
 	        .then(deleteWasConfirmed);
 
 	};
-	refreshNotes();
+
+	ctrl.editNote = function(noteId) {
+
+		var modalSettings = {
+	      	templateUrl: 'js/common/templates/add-edit-note.html',
+	        controller: 'editNote as modalCtrl',
+	        resolve: { noteId: function() { return noteId; } }
+	    };
+
+	    var modalClosedSuccesfully = function( newNote ) {
+	    	noteModel.update(newNote);
+	    	refreshAllNotes();
+	    };
+
+	    $uibModal
+	    	.open(modalSettings)
+	        .result
+	        .then(modalClosedSuccesfully);
+	};
+
+	refreshCurrentNotes();
 
 };
 
@@ -37,5 +62,5 @@ partialCtrl.$inject = [
 	'$uibModal',
 	'noteModel',
 	'NOTE_PRIORITY', 
-	'statusFilter'
+	'filterStatus'
 ];

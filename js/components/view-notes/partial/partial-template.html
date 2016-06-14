@@ -1,11 +1,11 @@
 <div 
 	class="row margin-bottom-lg bottom-bordered"
-	ng-init="statusClass = partialController.statusFilter.text.toLowerCase().replace(' ', '-')"
+	ng-init="statusClass = partialController.filterStatus.text.toLowerCase().replace(' ', '-')"
 	ng-class="' section-' +  statusClass + '-color '">
 		<div class="col-xs-12">
 			<h4 ng-class="' status-' +  statusClass + '-color '"> 
-				<i class="fa" ng-class="partialController.statusFilter.icon"></i>
-				<i class="margin-left-md"> {{ partialController.statusFilter.text }} </i>
+				<i class="fa" ng-class="partialController.filterStatus.icon"></i>
+				<i class="margin-left-md"> {{ partialController.filterStatus.text }} </i>
 			</h4>
 		</div>
 </div>
@@ -16,7 +16,7 @@
 		  <div class="panel-heading">
 		  	<div class="row">
 		  		<div class="col-sm-2 col-sm-offset-7">
-			  		<i class="fa fa-pencil-square-o"></i>
+			  		<i class="fa fa-pencil-square-o" ng-click="partialController.editNote(note.id)"></i>
 		  		</div>
 		  		<div class="col-sm-2">
 			  		<i class="fa fa-trash-o" ng-click="partialController.deleteNote(note.id)"></i>

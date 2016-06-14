@@ -31,8 +31,8 @@ var appCtrl = function( $rootScope, $scope, $uibModal, $state, noteModel ) {
 
 	ctrl.refreshNotes = function () {
 		$rootScope.$broadcast('refreshNotes');
-		$rootScope.$emit('refreshNotes');
 	};
+
 	ctrl.refreshNotes();
 };
 
@@ -40,5 +40,6 @@ appCtrl.$inject = [ '$rootScope', '$scope', '$uibModal', '$state', 'noteModel'];
 
 app
 	.controller('appCtrl', appCtrl)
-	.controller('addNote', addNote);
+	.controller('addNote', addNote)
+	.controller('editNote', editNote);
 	

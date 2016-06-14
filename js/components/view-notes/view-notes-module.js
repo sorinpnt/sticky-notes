@@ -44,18 +44,18 @@ viewNotesModule
 					'statusPending@home': {
 						templateUrl: 'js/components/view-notes/partial/partial-template.html',
 						controller: 'partialCtrl as partialController',
-						resolve: { statusFilter: function(NOTE_STATUS) { return NOTE_STATUS[0]; } }
+						resolve: { filterStatus: function(NOTE_STATUS) { return NOTE_STATUS[0]; } }
 					},
 
 					'statusInProgress@home': {
 						templateUrl: 'js/components/view-notes/partial/partial-template.html',
 						controller: 'partialCtrl as partialController',
-						resolve: { statusFilter: function(NOTE_STATUS) { return NOTE_STATUS[1]; } }
+						resolve: { filterStatus: function(NOTE_STATUS) { return NOTE_STATUS[1]; } }
 					},
 					'statusDone@home': {
 						templateUrl: 'js/components/view-notes/partial/partial-template.html',
 						controller: 'partialCtrl as partialController',
-						resolve: { statusFilter: function(NOTE_STATUS) { return NOTE_STATUS[2]; } }
+						resolve: { filterStatus: function(NOTE_STATUS) { return NOTE_STATUS[2]; } }
 					}
 				}
 			}

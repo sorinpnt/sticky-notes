@@ -1,5 +1,4 @@
 var addNote = function( $scope, $uibModalInstance, NOTE_PRIORITY, NOTE_STATUS ) {
-	this.selected = { value: ''};
 	
 	this.modalTitle = 'Add Note';
 	this.priorities = NOTE_PRIORITY;

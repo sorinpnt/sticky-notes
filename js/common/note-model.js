@@ -8,11 +8,8 @@ var noteModel = function(localStorageService) {
 			return false;
 		}
 		noteDetails = JSON.parse(noteDetails);
-		return {
-			id: noteId,
-			title: noteDetails.title,
-			body: noteDetails.text
-		}
+		noteDetails.id = noteId;
+		return noteDetails;
 	}
 
 	var addNote = function(noteDetails) {
@@ -21,13 +18,13 @@ var noteModel = function(localStorageService) {
 		return noteId;
 	}
 
-	var saveNote = function(noteId, noteTitle, noteBody) {
-		if ( null === localStorageService.get(noteId) ) {
-			return false;
-		} 
+	var updateNote = function(noteDetails) {
+		var noteId = noteDetails.id;
+		delete noteDetails.id;
+
 		return localStorageService.set(
 			noteId, 
-			JSON.stringify({ title: noteTitle, text: noteBody })
+			JSON.stringify(noteDetails)
 		);
 	}
 
@@ -57,7 +54,7 @@ var noteModel = function(localStorageService) {
 	return { 
 		get: getNote,
 		add: addNote,
-		save: saveNote,
+		update: updateNote,
 		remove: removeNote,
 		filter: filterAllNotes,
 		canSave: canSaveNotes
