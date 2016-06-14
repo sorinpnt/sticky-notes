@@ -1,6 +1,6 @@
 var viewNotesModule = angular.module('app.view-notes', [ 'ui.router' ]);
 
-var getPriorityDetails = function ( noteDetails, notePriorities) {
+var getPriorityDetailsFilter = function ( noteDetails, notePriorities) {
 	for ( var i = 0; i < notePriorities.length ; i++ ) {
 		if ( noteDetails.priorityId === notePriorities[i].id ) {
 			return notePriorities[i];
@@ -8,9 +8,34 @@ var getPriorityDetails = function ( noteDetails, notePriorities) {
 	}
 };
 
+var showElapsedTimeFilter = function ( timestamp ) {
+	// @TO-DO : fix bug when creation date is in previous day
+	var currentTimestamp = moment.utc().toDate().getTime();
+	var creationTimestamp = moment( parseInt(timestamp) );
+	var timestampDifference = moment.utc(currentTimestamp).diff(creationTimestamp);
+
+	var elapsedDays = moment.utc(timestampDifference).format('D');
+	var elapsedHours = moment.utc(timestampDifference).format('h');
+	var elapsedMinutes = moment.utc(timestampDifference).format('m');
+	var result = '';
+
+	if ( elapsedDays !== '0' ) {
+		result += ( elapsedDays+ 'd ');
+	}
+	if ( elapsedHours !== '0' ) {
+		result += ( elapsedHours+ 'h ');
+	}
+	if ( elapsedMinutes !== '0' ) {
+		result += ( elapsedMinutes+ 'm ');
+	}
+	return result + ' ago';
+};
+
 viewNotesModule
 	.controller('partialCtrl', partialCtrl)
-	.filter('getPriorityDetails', function () { return getPriorityDetails; })
+	.controller('confirmDeleteModal', confirmDeleteModal)
+	.filter('getPriorityDetails', function () { return getPriorityDetailsFilter; })
+	.filter('getElapsedTime', function () { return showElapsedTimeFilter; })
 	.config( function ($stateProvider, $urlRouterProvider) {
 		$stateProvider
 			.state('home', {

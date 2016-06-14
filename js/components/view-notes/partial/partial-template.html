@@ -19,7 +19,7 @@
 			  		<i class="fa fa-pencil-square-o"></i>
 		  		</div>
 		  		<div class="col-sm-2">
-			  		<i class="fa fa-trash-o"></i>
+			  		<i class="fa fa-trash-o" ng-click="partialController.deleteNote(note.id)"></i>
 		  		</div>
 		  	</div>
 		  </div>
@@ -34,7 +34,7 @@
 		  	</div>
 		  	<div class="row">
 		  		<div class="col-xs-12 text-right">
-		  			<small class="task-creation-time">2d 3h 48m ago</small>
+		  			<small class="task-creation-time">{{ note.id | getElapsedTime}}</small>
 		  		</div>
 		  	</div>
 		  </div>

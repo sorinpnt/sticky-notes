@@ -16,7 +16,7 @@ var noteModel = function(localStorageService) {
 	}
 
 	var addNote = function(noteDetails) {
-		var noteId = moment().toDate().getTime();
+		var noteId = moment.utc().toDate().getTime();
 		localStorageService.set(noteId, JSON.stringify(noteDetails));
 		return noteId;
 	}
@@ -44,7 +44,6 @@ var noteModel = function(localStorageService) {
 					id: noteId,
 					priorityId: noteDetails.priorityId,
 					statusId: noteDetails.statusId,
-					creationDate: noteId,
 					title: noteDetails.title,
 					text: noteDetails.text
 				});
@@ -52,8 +51,6 @@ var noteModel = function(localStorageService) {
 		});
 		return allNotesResult;
 	}
-
-	var removeAllNotes = function() { return localStorageService.clearAll(); }
 
 	var canSaveNotes = function() { return localStorageService.isSupported; }
 
@@ -63,7 +60,6 @@ var noteModel = function(localStorageService) {
 		save: saveNote,
 		remove: removeNote,
 		filter: filterAllNotes,
-		removeAll: removeAllNotes,
 		canSave: canSaveNotes
 	};
 }
