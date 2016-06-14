@@ -1,11 +1,12 @@
 var app = angular.module('app', [ 
 	'ui.router',
 	'note.model',
+	'app.config',
 	'ui.bootstrap'
 ]);
 
 var appCtrl = function( $scope, $uibModal, noteModel ) {
-	
+
 	this.openAddNote = function() {
 
 		var modalSettings = {
@@ -18,7 +19,7 @@ var appCtrl = function( $scope, $uibModal, noteModel ) {
 
 };
 
-appCtrl.$inject = ['$scope', '$uibModal', 'noteModel'];
+appCtrl.$inject = ['$scope', '$uibModal', 'NOTE_PRIORITY', 'noteModel'];
 
 app
 	.controller('appCtrl', appCtrl)

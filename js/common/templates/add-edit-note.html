@@ -55,8 +55,28 @@
     </div>
 
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <div class="row">
+
+            <div class="col-xs-10 col-xs-offset-1">
+                <select>
+                    <option ng-repeat="pr in modalCtrl.priorities">
+                        {{ pr.text }}
+                    </option>
+                </select>
+
+                <select>
+                    <option ng-repeat="pr in modalCtrl.status">
+                        <i class="fa fa-check"></i>
+                        {{ pr.text }}
+                    </option>
+                </select>
+
+
+            </div>
+
+        </div>
+        <!-- <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button> -->
     </div>
 </form>
 

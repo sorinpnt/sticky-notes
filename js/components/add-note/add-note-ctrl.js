@@ -1,5 +1,7 @@
-var addNote = function( $scope, $uibModal ) {
+var addNote = function( $scope, $uibModal, NOTE_PRIORITY, NOTE_STATUS ) {
 	this.modalTitle = 'Add Note';
+	this.priorities = NOTE_PRIORITY;
+	this.status = NOTE_STATUS;
 	this.note = {
 		title: '',
 		body: ''
@@ -7,4 +9,4 @@ var addNote = function( $scope, $uibModal ) {
 
 };
 
-addNote.$inject = ['$scope', '$uibModal'];
+addNote.$inject = ['$scope', '$uibModal', 'NOTE_PRIORITY', 'NOTE_STATUS'];
